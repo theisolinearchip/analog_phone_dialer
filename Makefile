@@ -6,7 +6,7 @@ FUSE_L			= 0xE2
 FUSE_H			= 0xDF
 AVRDUDE			= avrdude -c avrisp2 -p $(DEVICE)
 
-CFLAGS			= -std=c99 -Wall -g -Os -mmcu=${DEVICE} -DF_CPU=${F_CPU} -I.
+CFLAGS			= -std=gnu99 -Wall -g -Os -mmcu=${DEVICE} -DF_CPU=${F_CPU} -I.
 OBJECTS			= main.o
 
 TARGET			= main

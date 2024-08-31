@@ -43,22 +43,22 @@ ISR(TIMER1_COMPA_vect) {
 	
 }
 
-inline void open_line() {
+static inline void open_line() {
 	OPERATION_PORT |= (1 << OPERATION_RELAY_1);
 }
 
-inline void close_line() {
+static inline void close_line() {
 	OPERATION_PORT &= ~(1 << OPERATION_RELAY_1); // close line
 }
 
-inline void reset_phone_buffer()	{
+static inline void reset_phone_buffer()	{
 	for (int i = 0; i < PHONE_BUFFER_LENGTH; i++) {
 		phone_buffer[i] = DTMF_KEY_OFF;
 	}
 	current_phone_buffer_length = 0;
 }
 
-inline int check_for_line_reset() {
+static inline int check_for_line_reset() {
 	if (OPERATION_PIN & (1 << OPERATION_BUTTON_2) ) {
 		close_line();
 		current_mode = MODE_PHONE_WAITING;
